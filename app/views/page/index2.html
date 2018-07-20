@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>简单开发，因为简单所以更快</title>
+    <meta name="Keywords" content="eova,快速开发平台,后台管理系统,网站后台管理系统,网站后台,,jfinal" />
+    <meta name="Description" content="最简单的快速开发平台，免费开源，降低70%开发成本，快速搞定后台管理系统。EOVA使用了JFinal和JQuery，提供了丰富的后台模版，让你轻松做网站后台！" />
+    <meta name="baidu-site-verification" content="MyYvfXNn92" />
+    <link href="https://cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.js"></script>
+    <style type="text/css">
+        .hidden.menu {
+            display: none;
+        }
+        
+        .masthead.segment {
+            min-height: 700px;
+            padding: 1em 0em;
+        }
+        
+        .masthead .logo.item img {
+            margin-right: 1em;
+        }
+        
+        .masthead .ui.menu .ui.button {
+            margin-left: 0.5em;
+        }
+        
+        .masthead h1.ui.header {
+            margin-top: 3em;
+            margin-bottom: 0em;
+            font-size: 4em;
+            font-weight: normal;
+        }
+        
+        .masthead h2 {
+            font-size: 1.7em;
+            font-weight: normal;
+        }
+        
+        .ui.vertical.stripe {
+            padding: 8em 0em;
+        }
+        
+        .ui.vertical.stripe h3 {
+            font-size: 2em;
+        }
+        
+        .ui.vertical.stripe .button+h3,
+        .ui.vertical.stripe p+h3 {
+            margin-top: 3em;
+        }
+        
+        .ui.vertical.stripe .floated.image {
+            clear: both;
+        }
+        
+        .ui.vertical.stripe p {
+            font-size: 1.33em;
+        }
+        
+        .ui.vertical.stripe .horizontal.divider {
+            margin: 3em 0em;
+        }
+        
+        .quote.stripe.segment {
+            padding: 0em;
+        }
+        
+        .quote.stripe.segment .grid .column {
+            padding-top: 5em;
+            padding-bottom: 5em;
+        }
+        
+        .footer.segment {
+            padding: 5em 0em;
+        }
+        
+        .secondary.pointing.menu .toc.item {
+            display: none;
+        }
+        
+        @media only screen and (max-width: 700px) {
+            .ui.fixed.menu {
+                display: none !important;
+            }
+            .secondary.pointing.menu .item,
+            .secondary.pointing.menu .menu {
+                display: none;
+            }
+            .secondary.pointing.menu .toc.item {
+                display: block;
+            }
+            .masthead.segment {
+                min-height: 350px;
+            }
+            .masthead h1.ui.header {
+                font-size: 2em;
+                margin-top: 1.5em;
+            }
+            .masthead h2 {
+                margin-top: 0.5em;
+                font-size: 1.5em;
+            }
+        }
+        
+        .ver {
+            line-height: 30px;
+            font-size: 12px;
+            color: #A0A2A2;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+
+            // fix menu when passed
+            $('.masthead').visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            });
+
+            // create sidebar and attach to menu open
+            // 		$('.ui.sidebar').sidebar('attach events', '.toc.item');
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- Following Menu -->
+    <div class="ui large top fixed hidden menu">
+        <div class="ui container">
+            <a class="active item" href="/">EOVA</a> <a class="item" href="/qa">问答</a>
+            <a class="item" href="http://doc.eova.cn" target="_blank" rel="nofollow">在线文档</a>
+            <a class="item" href="http://www.ipresst.com/w/rveou9/play" target="_blank" rel="nofollow">在线预览</a>
+            <a class="item" href="http://www.oschina.net/p/eova" target="_blank" rel="nofollow">项目介绍</a>
+            <a class="item" href="https://gitee.com/eova/eova" target="_blank" rel="nofollow">项目下载</a>
+        </div>
+    </div>
+
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+
+            <div class="ui container">
+                <div class="ui large secondary inverted pointing menu">
+                    <!--         <a class="toc item"> -->
+                    <!--           <i class="sidebar icon"></i> -->
+                    <!--         </a> -->
+                    <a class="active item" href="/">EOVA</a> <a class="item" href="/qa">问答</a>
+                    <a class="item" href="http://doc.eova.cn" target="_blank" rel="nofollow">在线文档</a>
+                    <a class="item" href="http://www.ipresst.com/w/rveou9/play" target="_blank" rel="nofollow">在线预览</a>
+                    <a class="item" href="http://www.oschina.net/p/eova" target="_blank" rel="nofollow">项目介绍</a>
+                    <a class="item" href="https://gitee.com/eova/eova" target="_blank" rel="nofollow">项目下载</a>
+                    <div class="right item">
+                        <a class="ui inverted button" href="/login">登录</a> <a class="ui inverted button" href="/reg">注册</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui text container">
+                <h1 class="ui inverted header">最简单的快速开发平台</h1>
+                <h2>
+                    简单才是高科技，因为简单所以更快，降低70%开发成本
+                </h2>
+                <a href="http://git.oschina.net/eova/eova" target="_blank" rel="nofollow">
+                    <div class="ui huge primary button">
+                        快速开始 <i class="right arrow icon"></i>
+                    </div>
+                </a>
+                <a href="/help" target="_blank" rel="nofollow">
+                    <div class="ui huge primary button">
+                        V1.6众筹 <i class="right users icon"></i>
+                    </div>
+                </a>
+                <div class="ver">
+                    当前最新版本：V1.6 Beta5 | 软件更新于：2018-03-30
+                </div>
+                <div>
+                    <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=d2c2366bd69ee778e309596d5cd4a1b4420b2df909c7a664c59fd543ebb79328"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="JFinal 快速开发平台 EOVA" title="JFinal 快速开发平台 EOVA"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="eight wide column">
+                        <h3 class="ui header">因为简单所以更快</h3>
+                        <p>功能越来越强大，复杂度越来越高，效率真的能上去吗？</p>
+                        <p>没有最快，只有更简单，简单才是高科技</p>
+                        <p>快速开发年年有，简单开发只有EOVA</p>
+
+                        <h3 class="ui header">大众创业、万众创新，让我们来帮你！</h3>
+                        <p>我们可以帮你快速搞定后台管理系统</p>
+                        <p>快速完成后台，意味着你的前台业务会更完美！</p>
+                        <p>省时、省心、省力！</p>
+
+                    </div>
+                    <div class="six wide right floated column">
+                        <img src="/ui/images/eova.png" class="ui centered image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br /> <img class="ui centered image" src="/ui/images/feature.png">
+
+        <div class="ui vertical stripe segment">
+            <div class="ui text container">
+                <h3 class="ui header">互联网+网站后台管理系统</h3>
+                <p>网站后台管理系统主要是用于对网站前台的信息管理，如文字、图片、文件和其他多媒体的发布、更新、删除等操作，同时也包括会员信息、订单信息、数据的统计和管理。简单来说就是对网站数据库和文件的快速操作和管理系统，以使得前台内容能够得到有效的管理和维护。</p>
+                <p>“互联网+”是互联网行业的海天盛筵，是知识社会创新2.0推动下的互联网形态演进及其催生的经济社会发展新形态。</p>
+                <p>EOVA为大众创业、万众创新打开方便之门，夯实基础，让大家可以集中精力专注核心业务，提升用户侧的体验，节省创业成本，将后台管理系统交给EOVA快速开发平台来解决！妥妥的很贴心！</p>
+            </div>
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui text container">
+                <h3 class="ui header">什么是快速开发平台？</h3>
+                <p>快速开发平台，就是可以使得开发更为快速的开发平台。当开发平台产生之后，虽然减少了编程人员大量的编程时间，但是很多开发平台的效果并不是很理想，比如说某些开发平台比较复杂、难以掌握；有的开发平台通用性比较差；有的开发平台在时间上并没有得到改善；还有的依然还是需要写很多代码等等。这些问题的存在促使开发者不断的摸索、不断的改进，到最后越做越成熟，以致于现在市面上出现的大部分开发平台效率都非常高，他们改善了以往的产品存在的缺陷，使得开发过程比以往更简洁、编写代码更少、开发效率越来越高。</p>
+            </div>
+        </div>
+
+        <div class="ui container segment">
+            <div class="ui top attached label">友情链接 >> <a class="item" href="/link" target="_blank">更多友链</a></div>
+            <div class="ui horizontal small divided link list">
+                <a class="item" href="http://www.eova.cn/" title="jfinal快速开发平台" target="_blank">EOVA官网</a>&nbsp;
+                <a class="item" href="http://www.jfinal.com/" target="_blank">JFinal官网</a>&nbsp;
+                <a class="item" href="http://www.dreamlu.net/" target="_blank">JFinal在线学习</a>&nbsp;
+                <a class="item" href="http://wangeditor.github.io/" target="_blank">wangEditor</a>&nbsp;
+                <a class="item" href="http://www.flyne.org/" target="_blank">Flyne</a>&nbsp;
+            </div>
+        </div>
+
+        <div class="ui inverted vertical footer segment">
+            <div class="ui center aligned container">
+                <div class="ui stackable inverted divided grid">
+                    <div class="sixteen wide column">
+                        <!-- 						<p><a href="http://www.qiniu.com/"><img src="http://assets.qiniu.com/qiniu-black.png" height="80"></a></p> -->
+                        <p>EOVA官方社区 &copy; EOVA.CN</p>
+                    </div>
+                </div>
+                <div class="ui horizontal inverted small divided link list">
+                    <a class="item" onclick="alert('EOVA 2K群：424665115');">网站地图</a> <a class="item" onclick="alert('EOVA 2K群：424665115');">关于我们</a> <a class="item" onclick="alert('QQ:1623736450');">商业合作</a> <a class="item" href="https://gitee.com/eova/eova/blob/master/LICENSE">版权声明</a>
+                    <p>
+                        <a class="item" target="_blank" href="http://www.miitbeian.gov.cn/" rel="nofollow">鄂ICP备17016643号-1</a>
+                        <img src="/ui/images/wa.png" style="width:16px;"><a class="item" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102001939" rel="nofollow">鄂公网安备 42011102001939号</a>
+                    </p>
+                    <div style="width:300px;margin:0 auto; padding:20px 0;">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?b53dfa41fb30049acfa368da9a8b6eb9";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+</body>
+
+</html>
