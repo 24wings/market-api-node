@@ -9,9 +9,9 @@ logs/
 .vscode
 *.swp
 *.lock
-*.js
+#*.js
 
-app/**/*.js
+#app/**/*.js
 test/**/*.js
 config/**/*.js
 app/**/*.map
