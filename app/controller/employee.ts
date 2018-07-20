@@ -11,7 +11,7 @@ export default class extends Controller {
         if (!page) page = 0;
         if (!pageSize) pageSize = 10;
         let result = await db.txnArea.findAndCountAll({ limit: pageSize, offset: page * pageSize, where: { mktId } });
-        this.ctx.body = { ok: true, dara: { txnAreas: result } };
+        this.ctx.body = { ok: true, data: { txnAreas: result } };
     }
     async txnAreaCreate() {
         let newTxnArea = this.ctx.request.body;
