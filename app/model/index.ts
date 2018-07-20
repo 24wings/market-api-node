@@ -22,7 +22,7 @@ import { TxnArea } from './txn-area';
 // get the client
 const mysql = require('mysql2');
 // const dbConfig={host:'127.0.0.1',user:'root',database:'market',password:'root'}
-const dbConfig = { host: '47.106.131.159', user: 'root', database: 'market', password: 'root' }
+const dbConfig = { host: '47.106.131.159', user: 'root', database: 'market', password: 'zhang00001' }
 // create the connection to database
 export const connection = mysql.createConnection({
   host: dbConfig.host,

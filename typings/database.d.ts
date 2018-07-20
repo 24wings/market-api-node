@@ -15,6 +15,7 @@ interface ICategory {
   /** 是否显示 */
   isShow?: boolean;
   orderNo: number;
+  mktId: number;
 }
 interface ILink {
   linkId?: number;

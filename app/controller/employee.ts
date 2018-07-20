@@ -10,7 +10,7 @@ export default class extends Controller {
         let { mktId, page, pageSize } = this.ctx.request.body;
         if (!page) page = 0;
         if (!pageSize) pageSize = 10;
-        let result = await db.txnArea.findAndCountAll({ limit: page, offset: pageSize, where: { mktId } });
+        let result = await db.txnArea.findAndCountAll({ limit: pageSize, offset: page * pageSize, where: { mktId } });
         this.ctx.body = { ok: true, dara: { txnAreas: result } };
     }
     async txnAreaCreate() {
@@ -29,7 +29,13 @@ export default class extends Controller {
     }
 
     async categoryList() {
-        let categorys = await db.category.findAndCountAll();
+        let { mktId, pageSize, page } = this.ctx.request.body;
+        if (!pageSize) pageSize = 10;
+        if (!page) page = 0;
+        if (!mktId) {
+            return this.ctx.body = { ok: false, msg: '参数缺省' }
+        }
+        let categorys = await db.category.findAndCountAll({ limit: pageSize, offset: page * pageSize, where: { mktId: mktId as any } });
         this.ctx.body = { ok: true, data: { categorys } }
     }
     async categoryCreate() {
