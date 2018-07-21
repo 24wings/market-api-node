@@ -6,14 +6,19 @@ import { Application } from "egg";
 module.exports = (app: Application) => {
   let emp = app.controller.employee;
   let api = {
+    /** get ? */
+    categoryInternalList: '/employee/category/internal-list',
+
     /**
      * method post 
      * body:{mktId,page,pageSize}
      */
-    txnAreaList: '/api/txnArea/list',
-    txnAreaDelete: '/api/txnArea/delete',
-    txnAreaUpdate: '/api/txnArea/update',
-    txnAreaCreate: '/api/txnArea/create',
+    txnAreaList: '/employee/txnArea/list',
+    txnAreaDelete: '/employee/txnArea/delete',
+    txnAreaUpdate: '/employee/txnArea/update',
+    txnAreaCreate: '/employee/txnArea/create',
+    /** get ?txnId */
+    txnAreaDetail: '/employee/txnArea/detail',
 
 
     categoryCreate: '/employee/category/create',
@@ -45,12 +50,14 @@ module.exports = (app: Application) => {
     .get(api.noRoleEmployee, emp.noRoleEmployees)
     .post(api.batAddRole, emp.batRoleAdd)
     .get(api.roleEmployees, emp.listRoleEmployees)
-    .get(api.categoryList, emp.categoryList)
+    .post(api.categoryList, emp.categoryList)
     .post(api.categoryCreate, emp.categoryCreate)
     .post(api.categoryUpdate, emp.txnAreaCreate)
     .post(api.txnAreaList, emp.txnAreaList)
     .get(api.txnAreaDelete, emp.txnAreaDelete)
     .post(api.txnAreaCreate, emp.txnAreaCreate)
-    .post(api.txnAreaUpdate, emp.txnAreaUpdate);
+    .post(api.txnAreaUpdate, emp.txnAreaUpdate)
+    .get(api.txnAreaDetail, emp.txnAreaDetail)
+    .get(api.categoryInternalList, emp.categoryInternalList)
 
 };

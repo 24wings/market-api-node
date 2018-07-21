@@ -17,7 +17,7 @@ export let Category = (database: Sequelize) => {
         {
             cateId: { type: INTEGER, primaryKey: true, allowNull: false, autoIncrement: true },
             cateName: {
-                type: STRING,
+                type: STRING, allowNull: false,
             },
             cateCode: {
                 type: STRING, allowNull: false, unique: true
@@ -31,7 +31,10 @@ export let Category = (database: Sequelize) => {
 
             orderNo: {
                 type: INTEGER,
-            }
+            },
+            linkCateCode: { type: STRING, },
+            mktId: { type: INTEGER },
+            txnId: { type: INTEGER }
         }
     );
     // category.sync({ force: true });

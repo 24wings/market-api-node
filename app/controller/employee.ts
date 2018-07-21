@@ -6,6 +6,27 @@ import { Controller } from "egg";
 import db = require("../model");
 
 export default class extends Controller {
+    async  subjectList() {
+        let subjects = await db.subject.findAll();
+        this.ctx.body = { ok: true, data: { subjects } };
+    }
+    async subjectCreate() {
+        let newSubject: ISubject = this.ctx.request.body;
+        if (!newSubject.marketId || !newSubject.isShow)
+            newSubject = await db.subject.create(newSubject);
+        this.ctx.body = { ok: true, data: { subject: newSubject } };
+    }
+
+    async txnAreaDetail() {
+        let { txnId } = this.ctx.query;
+        let txn = await db.txnArea.findOne({ where: { txnId } });
+        this.ctx.body = { ok: true, data: { txn } };
+    }
+    async categoryInternalList() {
+        let categorys = await db.category.findAll({ where: { mktId: null } });
+        this.ctx.body = { ok: true, data: { categorys } };
+    }
+
     async txnAreaList() {
         let { mktId, page, pageSize } = this.ctx.request.body;
         if (!page) page = 0;
@@ -29,19 +50,30 @@ export default class extends Controller {
     }
 
     async categoryList() {
-        let { mktId, pageSize, page } = this.ctx.request.body;
+        let { mktId, pageSize, page, parentId, } = this.ctx.request.body;
         if (!pageSize) pageSize = 10;
         if (!page) page = 0;
         if (!mktId) {
             return this.ctx.body = { ok: false, msg: '参数缺省' }
         }
-        let categorys = await db.category.findAndCountAll({ limit: pageSize, offset: page * pageSize, where: { mktId: mktId as any } });
+        let categorys;
+        if (parentId) {
+            categorys = await db.category.findAndCountAll({
+                limit: pageSize, offset: page * pageSize,
+                where: { mktId: mktId as any, parentId }
+            });
+        } else {
+            categorys = await db.category.findAndCountAll({
+                limit: pageSize, offset: page * pageSize,
+                where: { mktId: mktId, parentId: null }
+            });
+        }
         this.ctx.body = { ok: true, data: { categorys } }
     }
     async categoryCreate() {
         let newCategory: ICategory = this.ctx.request.body;
-        if (!newCategory.parentId) {
-            this.ctx.body = { ok: false, msg: '市场人员不能创建顶级分类' }
+        if (!newCategory.linkCateCode || !newCategory.cateCode || !newCategory.mktId || !newCategory.txnId) {
+            this.ctx.body = { ok: false, msg: '参数缺省' };
         } else {
             newCategory = await db.category.create(newCategory);
             this.ctx.body = { ok: true, data: { category: newCategory } };

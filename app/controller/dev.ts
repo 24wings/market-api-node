@@ -8,7 +8,6 @@ import { QueryTypes, Model, } from 'sequelize';
 
 export default class extends Controller {
 
-
     async subjectUpdate() {
         let subject = this.ctx.request.body;
         let updateAction = await db.subject.update(subject, { where: { subId: subject.subId } });

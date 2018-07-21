@@ -4,6 +4,7 @@ import {
     Sequelize, Instance,
     STRING,
     INTEGER,
+    BOOLEAN
 } from "sequelize";
 
 
@@ -19,7 +20,8 @@ export let Subject = (database: Sequelize) => {
             subCode: { type: STRING, allowNull: false, unique: true, comment: '' },
             parentId: { type: INTEGER, },
             subLinkId: { type: INTEGER, comment: '实际链接科目' },
-            marketId: { type: INTEGER, allowNull: true, comment: '市场id' }
+            marketId: { type: INTEGER, allowNull: true, comment: '市场id' },
+            isShow: { type: BOOLEAN, allowNull: false, comment: '是否显示' }
         }
     );
     // subject.sync({ force: true });

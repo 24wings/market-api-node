@@ -9,14 +9,19 @@ interface ICategory {
   cateId?: number;
   cateCode: string;
   /** 分类名称 */
-  cateName?: number;
+  cateName?: string;
   /** 数据库名称 */
   parentId?: number;
   /** 是否显示 */
   isShow?: boolean;
   orderNo: number;
   mktId: number;
+  linkCateCode: string;
+  mktId: string;
+  txnId: number;
+
 }
+
 interface ILink {
   linkId?: number;
   link: string;
@@ -29,7 +34,7 @@ interface ILink {
 }
 
 interface ISubject {
-
+  isShow: boolean;
   subId: number;
   subName: string;
   parentId: number;

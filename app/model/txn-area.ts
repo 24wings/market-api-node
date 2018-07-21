@@ -8,7 +8,8 @@ export var TxnArea = (database: Sequelize) => {
         txnId: { type: INTEGER, primaryKey: true, autoIncrement: true },
         mktId: { type: INTEGER, allowNull: true },
         txnCode: { type: STRING, allowNull: false, unique: true },
-        txnName: { type: STRING, allowNull: false }
+        txnName: { type: STRING, allowNull: false },
+
     })
     // txnArea.sync({ force: true });
     return txnArea;
