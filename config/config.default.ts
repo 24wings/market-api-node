@@ -9,6 +9,7 @@ export interface BizConfig {
 }
 
 export default (appInfo: EggAppConfig) => {
+
   const config = {} as PowerPartial<EggAppConfig> & BizConfig;
 
   // app special config
